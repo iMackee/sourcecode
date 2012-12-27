@@ -1,0 +1,53 @@
+############################
+# From Android App Security#
+############################
+
+        public staticbyte[] generateKey(byte[] randomNumberSeed) {
+                SecretKey sKey  =  null;
+                try {
+                     KeyGenerator keyGen  =  KeyGenerator.getInstance("AES");
+                     SecureRandom random  =  SecureRandom.getInstance("SHA1PRNG");
+                     random.setSeed(randomNumberSeed);
+                     keyGen.init(256,random);
+                     sKey  =  keyGen.generateKey();
+                } catch (NoSuchAlgorithmException e) {
+                     Log.e(TAG,"No such algorithm exception");
+                }
+                return sKey.getEncoded();
+        }
+
+
+# Reworked Encryption Routine with CBC Encryption Mode
+         private static byte[] encrypt(byte[] key, byte[] data, byte[] iv){
+                SecretKeySpec sKeySpec  =  new SecretKeySpec(key,"AES");
+                Cipher cipher;
+                byte[] ciphertext  =  null;
+                try {
+                     cipher  =  Cipher.getInstance("AES/CBC/PKCS5Padding");
+                     IvParameterSpec ivspec  =  new IvParameterSpec(iv);
+                     cipher.init(Cipher.ENCRYPT_MODE, sKeySpec, ivspec);
+                     ciphertext  =  cipher.doFinal(data);
+                } catch (NoSuchAlgorithmException e) {
+                     Log.e(TAG,"NoSuchAlgorithmException");
+                } catch (NoSuchPaddingException e) {
+                     Log.e(TAG,"NoSuchPaddingException");
+                } catch (IllegalBlockSizeException e) {
+                     Log.e(TAG,"IllegalBlockSizeException");
+                } catch (BadPaddingException e) {
+                     Log.e(TAG,"BadPaddingException");
+                } catch (InvalidKeyException e) {
+                     Log.e(TAG,"InvalidKeyException");
+             }
+             return ciphertext;
+        }
+
+# Reworked Key Generation Example with Fixed Key Value
+         public static byte[] generateKey(String stringKey) {
+                try {
+                     SecretKeySpec sks  =  new
+                     SecretKeySpec(stringKey.getBytes(),"AES");
+                  } catch (NoSuchAlgorithmException e) {
+                     Log.e(TAG,"No such algorithm exception");
+                }
+                return sks.getEncoded();
+         }
