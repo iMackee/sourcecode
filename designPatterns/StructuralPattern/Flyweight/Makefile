@@ -1,16 +1,16 @@
 #----------------------
 # To be changed
 #----------------------
-BIN = AbstractFactory
+BIN = Flyweight
 
 SOURCE := \
-	Product.cpp \
-	Product.h \
-	AbstractFactory.cpp \
-	AbstractFactory.h \
+	Flyweight.cpp \
+	Flyweight.h \
+	FlyweightFactory.cpp \
+	FlyweightFactory.h \
 	main.cpp
 
-PATTERN = ???
+PATTERN = FlyweightPattern
 SOURCE_PATTERN = $(PATTERN).cpp
 #----------------------
 # Do not change

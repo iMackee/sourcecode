@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../Utility/list.h"
+#include "Utility/list.h"
 
 ListNode* MeetingNode(ListNode* pHead)
 {
