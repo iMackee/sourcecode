@@ -1,11 +1,13 @@
 #----------------------
 # To be changed
 #----------------------
-BIN = AbstractFactory
+BIN = State
 
 SOURCE := \
 	$(BIN).cpp \
 	$(BIN).h \
+	Context.cpp \
+	Context.h \
 	main.cpp
 
 PATTERN = $(BIN)Pattern

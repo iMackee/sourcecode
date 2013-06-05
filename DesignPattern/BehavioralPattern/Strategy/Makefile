@@ -1,9 +1,11 @@
 #----------------------
 # To be changed
 #----------------------
-BIN = AbstractFactory
+BIN = Strategy
 
 SOURCE := \
+	Context.cpp \
+	Context.h \
 	$(BIN).cpp \
 	$(BIN).h \
 	main.cpp

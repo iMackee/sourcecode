@@ -1,16 +1,14 @@
 #----------------------
 # To be changed
 #----------------------
-BIN = AbstractFactory
+BIN =
 
 SOURCE := \
-	Product.cpp \
-	Product.h \
-	AbstractFactory.cpp \
-	AbstractFactory.h \
+	$(BIN).cpp \
+	$(BIN).h \
 	main.cpp
 
-PATTERN = ???
+PATTERN = $(BIN)Pattern
 SOURCE_PATTERN = $(PATTERN).cpp
 #----------------------
 # Do not change
