@@ -14,6 +14,9 @@ public:
 
 protected:
 private:
+    /**
+     * To make Context to access ChangeState() which is protected, state is declared friend class
+     */
     friend class State;
     bool ChangeState(State* state);
 
