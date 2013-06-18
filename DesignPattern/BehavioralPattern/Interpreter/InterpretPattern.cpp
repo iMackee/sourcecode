@@ -25,42 +25,38 @@ class One;
 
 class RNInterpreter
 {
-
 public:
     RNInterpreter();
     // ctor for client
     RNInterpreter(int){}
-
     // ctor for subclasses, avoids infinite loop
     int interpret(string s);
     // interpret() for client
-    virtual void interpret(string input, int &total)
-        {
+    virtual void interpret(string input, int &total){
+        // for internal use
+        int index;
+        index = 0;
 
-            // for internal use
-            int index;
-            index = 0;
-
-            if (!strncmp(input, nine(), 2)){
-                total += 9 * multiplier();
-                index += 2;
-            } else if (!strncmp(input, four(), 2)){
-                total += 4 * multiplier();
-                index += 2;
-            } else {
-                if (input[0] == five()){
-                    total += 5 * multiplier();
-                    index = 1;
-                } else
-                    index = 0;
-                for (int end = index + 3; index < end; index++)
-                    if (input[index] == one())
-                        total += 1 * multiplier();
-                    else
-                        break;
-            }
-            strcpy(input, &(input[index]));
+        if (!strncmp(input, nine(), 2)){
+            total += 9 * multiplier();
+            index += 2;
+        } else if (!strncmp(input, four(), 2)){
+            total += 4 * multiplier();
+            index += 2;
+        } else {
+            if (input[0] == five()){
+                total += 5 * multiplier();
+                index = 1;
+            } else
+                index = 0;
+            for (int end = index + 3; index < end; index++)
+                if (input[index] == one())
+                    total += 1 * multiplier();
+                else
+                    break;
         }
+        strcpy(input, &(input[index]));
+    }
     // remove leading chars processed
 protected:
     // cannot be pure virtual because client asks for instance
@@ -89,7 +85,6 @@ private:
 
 class Thousand: public RNInterpreter
 {
-
 public:
     // provide 1-arg ctor to avoid infinite loop in base class ctor
     Thousand(int): RNInterpreter(1){}
@@ -119,16 +114,13 @@ protected:
 
 class Hundred: public RNInterpreter
 {
-
 public:
-    Hundred(int): RNInterpreter(1)
-        {
-        }
+    Hundred(int): RNInterpreter(1){}
 
 protected:
     char one(){
         return 'C';
-        }
+    }
 
     char *four(){
         return "CD";
