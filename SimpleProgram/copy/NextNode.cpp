@@ -148,6 +148,8 @@ void Test1_7()
     ConnectTreeNodes(pNode6, pNode5, pNode7);
     ConnectTreeNodes(pNode10, pNode9, pNode11);
 
+    PrintTree(pNode8); // now root is pNode8
+
     Test("Test1", pNode8, pNode9);
     Test("Test2", pNode6, pNode7);
     Test("Test3", pNode10, pNode11);
